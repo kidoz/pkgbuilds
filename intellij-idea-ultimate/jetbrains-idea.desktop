@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=3.0
+Name=IntelliJ IDEA
+Comment=Java IDE with the fastest-growing mindshare
+Exec=/opt/intellij-idea-ultimate/bin/idea.sh
+Path=/opt/intellij-idea-ultimate/bin
+Terminal=false
+Icon=intellij-idea-ultimate
+Type=Application
+Categories=Development;IDE
