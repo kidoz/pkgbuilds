@@ -1,8 +1,8 @@
 # Maintainer: Alexsandr Pavlov <kidoz at mail dot ru>
 pkgname=intellij-idea-ultimate
 _pkgname=idea-IU
-pkgver=2016.3.1
-_pkgver=163.7743.44
+pkgver=2016.3.3
+_pkgver=163.11103.6
 pkgrel=1
 pkgdesc=" Java IDE with the fastest-growing mindshare"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ license=('custom')
 depends=('java-environment')
 source=(http://download.jetbrains.com/idea/ideaIU-${pkgver}.tar.gz
          jetbrains-idea.desktop)
-sha1sums=('5d6f1d22838948f4f5b25e23eab2386b32499f11'
-          '2532c8952ba01f6fb0725afc523468aaa391bdfb')
+sha256sums=('95871c9a8aed1bd8992ff493fbc5fc31674b18ef3cd509eb8f2e5650b3419eaf'
+            '3a0f3804a65fbfb2e6398e4da9129ef934e7898c197e4647ef4a19a90ac810d5')
 
 package() {
   cd "${srcdir}"
