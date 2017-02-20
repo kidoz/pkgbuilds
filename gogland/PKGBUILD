@@ -1,0 +1,43 @@
+# Maintainer: Alexsandr Pavlov <kidoz at mail dot ru>
+pkgname=gogland
+_pkgname=Gogland
+pkgver=1.0
+_pkgver=163.12024.32
+pkgrel=1
+pkgdesc="Up and Coming Go IDE"
+arch=('i686' 'x86_64')
+options=('!strip')
+url="https://www.jetbrains.com/go"
+license=('custom')
+depends=('java-environment')
+source=(http://download.jetbrains.com/go/${pkgname}-${_pkgver}.tar.gz
+         gogland.desktop)
+sha256sums=('3964d4cedf770c6f5b990eb00cbade6c95dcac1ba874c24e20f3cd926eb9d78d'
+            'fc07cd750d99f8e9054aeb6be8ade0bb3d3434c7a0f946c7c180b913a3113325')
+
+package() {
+  cd "${srcdir}"
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  cp -r ${srcdir}/${_pkgname}-${_pkgver}/* "${pkgdir}/opt/${pkgname}"
+  if [[ $CARCH = 'i686' ]]; then
+    rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/libbreakgen64.so"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier-arm"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/gogland64.vmoptions"
+  fi
+  
+  if [[ $CARCH = 'x86_64' ]]; then
+    rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux.so"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/libbreakgen.so"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier-arm"
+    rm -f "${pkgdir}/opt/${pkgname}/bin/gogland.vmoptions"
+  fi
+
+  mkdir -p "${pkgdir}/usr/share/applications"
+  mkdir -p "${pkgdir}/usr/share/pixmaps"
+  install -m 644 "${startdir}/gogland.desktop" "${pkgdir}/usr/share/applications"
+  install -m 644 "${pkgdir}/opt/${pkgname}/bin/gogland.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+}
+

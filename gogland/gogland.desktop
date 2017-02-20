@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=3.0
+Name=Gogland
+Comment=Up and Coming Go IDE
+Exec=/opt/gogland/bin/gogland.sh
+Path=/opt/gogland/bin
+Terminal=false
+Icon=gogland
+Type=Application
+Categories=Development;IDE
